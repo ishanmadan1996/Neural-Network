@@ -34,7 +34,7 @@ sentiment_network_140.py
 The 'lexicon-1500.pickle' file is the lexicon obtained from the first 1500 samples of 'train_set.csv'. 'model.pickle' is a pre-trained model using this lexicon.
 
 ## Output
-The output consists of the accuracy of the model in correcttly classifying the sentiment of the tweet. As we can see the accuracy is a bit low, which can be improved by taking more number of samples from dataset.
+The output consists of the accuracy of the model, in correctly classifying the sentiment of the tweets given in testing dataset. As we can see the accuracy is a bit low, which can be improved by taking more number of samples from the 140 sentiment dataset.
 
 ```
 Epoch 10 completed out of 10 loss: 1565.3750583734563
