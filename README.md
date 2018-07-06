@@ -33,7 +33,7 @@ sentiment_network_140.py
 ```
 The 'lexicon-1500.pickle' file is the lexicon obtained from the first 1500 samples of 'train_set.csv'. 'model.pickle' is a pre-trained model using this lexicon.
 
-##Output
+## Output
 The output consists of the accuracy of the model in correcttly classifying the sentiment of the tweet. As we can see the accuracy is a bit low, which can be improved by taking more number of samples from dataset.
 
 ```
@@ -49,6 +49,7 @@ Positive: This was the best store i've ever seen.
 ## Built With
 
 * [Python](https://www.python.org/doc/) - The scripting language used
+* [TensorFlow]('https://www.tensorflow.org/get_started/') - Library used for building neural network
 
 ## Authors
 
