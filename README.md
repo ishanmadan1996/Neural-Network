@@ -49,7 +49,7 @@ Positive: This was the best store i've ever seen.
 ## Built With
 
 * [Python](https://www.python.org/doc/) - The scripting language used
-* [TensorFlow]('https://www.tensorflow.org/get_started/') - Library used for building neural network
+* [TensorFlow](https://www.tensorflow.org/get_started/) - Library used for building neural network
 
 ## Authors
 
