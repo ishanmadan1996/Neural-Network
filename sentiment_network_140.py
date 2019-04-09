@@ -6,6 +6,10 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 import pandas as pd 
 
+'''
+Note :- In tensorflow, we first need to statically define all the computation graphs, cost functions, prediction models, optimisers,etc before we can start training them.
+'''
+
 lemmatizer = WordNetLemmatizer()
 
 n_nodes_hl1 = 500
@@ -51,8 +55,8 @@ tf_log = 'tf.log' #track current epoch number
 #training the neural network, by using training dataset
 def train_neural_network(x):
     prediction = neural_network_model(x)  #build model and save in var prediction
-    cost = tf.reduce_mean( tf.nn.softmax_cross_entropy_with_logits(logits = prediction,labels = y) )
-    optimizer = tf.train.AdamOptimizer(learning_rate=0.001).minimize(cost)
+    cost = tf.reduce_mean( tf.nn.softmax_cross_entropy_with_logits(logits = prediction,labels = y) ) #loss function to calculate error between labels (model predicted o/p) and logits (actual o/p)
+    optimizer = tf.train.AdamOptimizer(learning_rate=0.001).minimize(cost) #An alternative to gradient descent, we use Adam to update our weights and biases of our Deep Neural Network. In short, we train our model using it.
     with tf.Session() as sess: #initialise session and start the computation graph/model
         sess.run(tf.global_variables_initializer()) #initilalise all tf models/variables
         try:
@@ -98,7 +102,7 @@ def train_neural_network(x):
                 batch_y.append(line_y)
                 if len(batch_x) >= batch_size: #checking cost for one batch of samples
                     _, c = sess.run([optimizer, cost], feed_dict={x: np.array(batch_x),
-                                                              y: np.array(batch_y)}) #calculates the loss, and feeds the input and output data to x and y respectively
+                                                              y: np.array(batch_y)}) #calculates the loss, and feeds the input and output data to x and y respectively. Also we are training our NN here by using Adam and cost function
                     epoch_loss += c
                     batch_x = []
                     batch_y = []
@@ -128,7 +132,7 @@ def test_neural_network():
             epoch_loss = 0
             
         correct = tf.equal(tf.argmax(prediction, 1), tf.argmax(y, 1)) #argmax returns index of max value. We use it to compare predicted vs actual o/p
-        accuracy = tf.reduce_mean(tf.cast(correct, 'float')) #tf.cast() changes datatype of var.
+        accuracy = tf.reduce_mean(tf.cast(correct, 'float')) #tf.cast() changes datatype of var. reduce_mean calculated mean of all values in "correct". Hence we are caluclating the mean error
         feature_sets = []
         labels = []
         counter = 0
